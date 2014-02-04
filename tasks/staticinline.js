@@ -39,7 +39,7 @@ module.exports = function(grunt) {
   };
 
   var findReplaceScript = function(templatePath, content, basepath){
-    return content.replace(/<script[^<]src=['"]([^'"]+)['"][^<]inline=['"]true['"][^<]><\/script>/g, function(match, src){
+    return content.replace(/<script[^<]src=['"]([^'"]+)['"][^<]*inline=['"]true['"][^<]*><\/script>/g, function(match, src){
       return baseTAGReplace(templatePath, "script", src, basepath);
     });
   };
