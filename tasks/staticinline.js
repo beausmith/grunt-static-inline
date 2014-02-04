@@ -10,7 +10,7 @@ module.exports = function(grunt) {
   'use strict';
   var datauri = require('datauri');
   var path = require('path');
-  var description = 'A grunt plugin to replace url from static files such as img,js,css an put inline in a template';  
+  var description = 'A grunt plugin to replace url from static files such as img,js,css an put inline in a template';
   var resolveFilePath = function(templatePath, src, basepath){
     var srcPath;
     if(!grunt.file.isPathAbsolute(src)){
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
   };
 
   var findReplaceScript = function(templatePath, content, basepath){
-    return content.replace(/<script[^<]src=['"]([^'"]+)['"][^<]inline=['"]true['"][^<]*><\/script>/g, function(match, src){
+    return content.replace(/<script[^<]src=['"]([^'"]+)['"][^<]*inline=['"]true['"][^<]*><\/script>/g, function(match, src){
       return baseTAGReplace(templatePath, "script", src, basepath);
     });
   };
@@ -70,8 +70,8 @@ module.exports = function(grunt) {
 
   var findAndReplace = function(options, templatePath, content){
     return findReplaceVariables(options,
-           findReplaceImg(templatePath, 
-           findReplaceScript(templatePath,  
+           findReplaceImg(templatePath,
+           findReplaceScript(templatePath,
            findReplaceLink(templatePath, content, options.basepath), options.basepath), options.basepath));
   };
 
