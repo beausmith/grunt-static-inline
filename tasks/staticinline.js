@@ -39,7 +39,7 @@ module.exports = function(grunt) {
   };
 
   var findReplaceScript = function(templatePath, content, basepath){
-    return content.replace(/<script[^<]src=['"]([^'"]+)['"][^<]*inline=['"]true['"][^<]*><\/script>/g, function(match, src){
+    return content.replace(/<script[^<]*inline=['"]true['"][^<]*src=['"]([^'"]+)['"][^<]*><\/script>/g, function(match, src){
       return baseTAGReplace(templatePath, "script", src, basepath);
     });
   };
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
   };
 
   var findReplaceImg = function(templatePath, content, basepath){
-    return content.replace(/<img[^<]*src=['"]([^'"]+)['"][^<]*inline=['"]true['"][^<]*\/?\s*>/g, function(match, src){
+    return content.replace(/<img[^<]*inline=['"]true['"][^<]*src=['"]([^'"]+)['"][^<]*\/?\s*>/g, function(match, src){
         var srcPath = resolveFilePath(templatePath, src, basepath);
         if(srcPath){
           return match.replace(/inline=['"]true['"]/g, '').replace(src, datauri(srcPath));
